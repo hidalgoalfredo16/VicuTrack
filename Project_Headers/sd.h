@@ -69,7 +69,7 @@ error SD_Leer(dato lectura[]);
     @li @c 5 Se produjo un error de timer
 */
 
-error SD_Escribir(byte *direccion,dato datos[][tam_dato]);
+error SD_Escribir(byte *direccion,dato datos[]);
 
 //! Establece el Baud Rate
 /*!

@@ -4,9 +4,10 @@
  *  Created on: Sep 24, 2014
  *      Author: usuario
  */
-//#include "sd.h"
+#include "sd.h"
+#include "error.h"
 
-int Init_SD(void) {
+error Init_SD(void){
 	return 1;
 }
 

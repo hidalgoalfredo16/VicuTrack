@@ -9,6 +9,14 @@
 int BORRAME=0;
 int BORRAME_ERRACK=0;
 
+extern byte id;
+extern byte Buffer_Rx[tam_paquete];
+extern byte ban_ACK;
+extern byte ban_bufferTx; 
+extern byte ban_turno;
+extern byte ban_muerte;
+extern dato Buffer_GPS[cantidad_datos][tam_dato];
+extern byte dir_escritura[4];
 
 error Init_Trans(void){
     SCI2BDH = 0x00;

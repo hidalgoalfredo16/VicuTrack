@@ -2,6 +2,15 @@
 //! @brief Contiene todas las funciones que requieren la utilizacion del dispositivo
 #include "derivative.h"
 #include"error.h"
+#include "gps.h"
+
+#define TIMERACK 50
+#define ACK 65
+#define NACK 33
+#define POS_LAT 12
+#define POS_LONG 22
+#define INTENTOSENVIO 50
+
 
 //! Inicializacion del Transceiver
 error Init_Trans(void);

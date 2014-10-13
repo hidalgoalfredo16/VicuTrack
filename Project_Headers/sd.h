@@ -3,7 +3,8 @@
 @brief Declara las variables y funciones públicas para el manejo de la tarjeta sd.
 */
 #include "derivative.h"
-#include"error.h"
+#include "error.h"
+#include "gps.h"
 
 //! Enciende tarjeta SD
 /*!
@@ -58,7 +59,7 @@ error SD_EnviarRecibirByte(byte,byte*);
     @li @c 5 Se produjo un error de timer
 */
 
-error SD_Leer(dato lectura[]);
+error SD_Leer(dato lectura[][tam_dato]);
 
 //! Escribe datos en la tarjeta
 /*!

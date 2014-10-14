@@ -82,7 +82,7 @@ error Transceiver_RecibirByte(byte *);
     @li @c Contador de los datos transmitidos
     @li @c Nº de secuencia de los datos
 */
-error Transceiver_Enviar(dato buf[][tam_dato],byte*,byte*);
+error Transceiver_Enviar(dato buf[][tam_dato],byte *j,byte *nrosec);
 
 //! Permite recibir un ACK
 /*!

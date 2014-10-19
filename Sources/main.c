@@ -41,7 +41,7 @@ void main(void){
     temp=Init_Trans();
     temp=Init_LED();
     temp=Init_GPS();
-    temp=Init_SD();
+    temp=(error) SD_Init();
     temp=SD_Prender();
     LED_BrillarR(2,UNSEG);
     (void)SD_LeerDireccion();
@@ -103,7 +103,7 @@ void main(void){
 				if(ban_datodif==1){// esta bandera dice que ya cambio entonces a cont. escribimos el ultimo dato 
                     ban_datodif=0; //igual y a cont. escribimos el dato distinto.
                     if( GPS_EscribirBuffer(ult_dat,Buffer_GPS)==_ERR_OVF){// escribimos en el buffer, si esta lleno informa
-                         temp=Init_SD();
+                         temp=(error) SD_Init();
                          temp=SD_Prender();
                          resp3=SD_Escribir(dir_escritura,Buffer_GPS);// escribimos la SD con el buffer lleno
                          resp2=SD_CalculaDireccion(dir_escritura);// actualizamos la dir escritura de la SD
@@ -111,7 +111,7 @@ void main(void){
                     }
 				}
                 if( GPS_EscribirBuffer(dat,Buffer_GPS)==_ERR_OVF){
-                    temp=Init_SD();
+                    temp=(error) SD_Init();
                     temp=SD_Prender();
                     resp3=SD_Escribir(dir_escritura,Buffer_GPS);
                     resp2=SD_CalculaDireccion(dir_escritura);

@@ -6,7 +6,11 @@
  */
 #include "sd.h"
 
-
+extern byte dir_lectura[4];
+extern byte ban_bufferTx;
+extern byte ban_SDvacia;
+extern byte dir_escritura[4];
+extern byte dir_lectura[4];
 
 struct {
   UINT8 NUM_BLOCKS;

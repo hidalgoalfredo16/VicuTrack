@@ -33,10 +33,10 @@
 #define ID_H              0xCA
 #define ID_L              0xFE
 #define SD_Assert() ( \
-    (void)clrReg8Bits(PTBD, 0x20)      /* PTBD5=0x00*/  \
+    (void)(PTBD_PTBD5 = 0)  	/* PTBD5=0x00*/  \
   )
 #define SD_DesAssert() ( \
-    (void)setReg8Bits(PTBD, 0x20)      /* PTBD5=0x01 */ \
+    (void)(PTBD_PTBD5 = 1)      /* PTBD5=0x01 */ \
   )
 
 #define SD_BLOCK_SIZE   (0x00000200)

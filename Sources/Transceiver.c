@@ -186,7 +186,7 @@ error Transceiver_RecibirSM(){
 	    	(void)CPU_ApagarRTC();
 	    	if(Transceiver_ControlarDato()==_ERR_OK){
 	    		if(GPS_EscribirBuffer(Buffer_Rx,Buffer_GPS)== _ERR_OVF){
-					(void)Init_SD();
+					(void)SD_Init();
 					(void)SD_Prender();
 					(void)SD_Escribir(dir_escritura,Buffer_GPS);// escribimos la SD con el buffer lleno
 					(void)SD_CalculaDireccion(dir_escritura);// actualizamos la dir escritura de la SD

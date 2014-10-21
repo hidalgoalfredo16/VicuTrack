@@ -4,6 +4,7 @@
  *  Created on: Sep 24, 2014
  *      Author: usuario
  */
+
 #include "sd.h"
 
 extern byte dir_lectura[4];
@@ -268,8 +269,8 @@ error SD_Prender(){
     (void)SD_SetBaudRateMode(SD_BM_285_714KHZ);
   	SD_DesAssert();    //Hacemos un Desassert (-SS=1 Activo en baja)
   	for ( Index=0 ; Index < 10 ; Index ++ )	// Send dummy char
-  	    (void)SD_EnviarByte(DUMMY_BYTE);
-    (void)Cpu_Delay100US(100);
+  	    (void) SD_EnviarByte(DUMMY_BYTE);
+    Cpu_Delay100US(100);
   	SD_Assert();       //Hacemos un Assert (-SS=0 Activo en baja)
   	arg[0]=0x00;
   	arg[1]=0x00;
@@ -490,16 +491,27 @@ error SD_SetBaudRateMode(byte Mod){
 //-----------------------------   SD_CALCULARDIRECCION   -----------------------------//
 
 
-error SD_CalculaDireccion(byte *dir){
-    long *aux , aux2;
-    aux=dir;
-    aux2=(*aux)+512;
-    if(aux2 < 512)
+error SD_CalculaDireccion(byte * dir){
+    //long *aux , aux2;
+    //aux=dir;
+	long Auxiliar;
+	
+    Auxiliar = dir[0];
+    Auxiliar <<= 8;
+    Auxiliar |= dir[1];
+    Auxiliar <<= 8;
+    Auxiliar |= dir[2];
+    Auxiliar <<= 8;
+    Auxiliar |= dir[3];
+    
+	Auxiliar += 512;
+	
+    if(Auxiliar < 512)
         return _ERR_DIR;
-    dir[0]=aux2>>24;
-    dir[1]=(aux2<<8)>>24;
-    dir[2]=(aux2<<16)>>24;
-    dir[3]=(aux2<<24)>>24;
+    dir[0]=(byte)(Auxiliar>>24);
+    dir[1]=(byte)(Auxiliar>>16);
+    dir[2]=(byte)(Auxiliar>>8);
+    dir[3]=(byte)(Auxiliar);
     (void)SD_Prender();
     (void)SD_EscribirDireccion();
     return _ERR_OK;            
@@ -641,7 +653,7 @@ error SD_EscribirDireccion(){
     dirbase[1]=0x05;
     dirbase[2]=0x04;
     dirbase[3]=0x00;
-    (void)SD_EnviarCMD(CMD24,&dirbase);  // CMD24 para escribir
+    (void)SD_EnviarCMD(CMD24,dirbase);  // CMD24 para escribir
     // Debemos recibir respuesta R1
 		do{
 		    (void)SD_RecibirByte(&Rx);

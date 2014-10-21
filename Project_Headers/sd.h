@@ -9,6 +9,7 @@
 #include "sd_command.h"
 //#include "null.h"
 #include "spi.h"
+#include "CPU.h"
 
 
 #define OVERRUN_ERR      0x01          // Overrun error flag bit
@@ -147,7 +148,7 @@ error SD_Leer(dato lectura[][tam_dato]);
     @li @c 1 No se produjo un error
     @li @c 5 Se produjo un error de timer
 */
-error SD_Escribir(byte *direccion,dato datos[]);
+error SD_Escribir(byte *direccion,dato datos[][tam_dato]);
 
 //! Establece el Baud Rate
 /*!

@@ -47,7 +47,8 @@ UINT8 SPI_ReceiveByte(void) {
 	}
   ApplyChanges = True;
 	
-} 
+}*/
+
 /************************************************/
 void SPI_HighRate(void) {
   SPIC1 = 0x00;
